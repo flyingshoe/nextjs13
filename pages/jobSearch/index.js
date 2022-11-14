@@ -127,6 +127,8 @@ function JobSearch() {
                     sx={{
                       background: "transparent",
                       boxShadow: "0 0 8px lightgrey",
+                      height: 80,
+                      width: 80,
                     }}
                     variant="rounded"
                   >
@@ -144,8 +146,9 @@ function JobSearch() {
               ></CardHeader>
               <CardContent>
                 <h2>
-                  ${addComma(item.salary.minimum)} -{" "}
-                  {addComma(item.salary.maximum)}
+                  {` $${addComma(item.salary.minimum)} - $${addComma(
+                    item.salary.maximum
+                  )} `}
                 </h2>
                 Posted: <b>{item.metadata.newPostingDate}</b>
               </CardContent>
