@@ -15,7 +15,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'static.mycareersfuture.gov.sg',
-        port: '',
         pathname: '/images/company/logos/**',
       },
     ],

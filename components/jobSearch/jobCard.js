@@ -46,6 +46,7 @@ export default function JobCard({ cardData: data }) {
               }}
             >
               <Image
+                alt="Job Icon"
                 style={{ height: "auto" }}
                 width={iconSize}
                 height={iconSize}
