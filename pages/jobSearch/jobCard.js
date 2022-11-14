@@ -37,8 +37,8 @@ export default function JobCard({ cardData: data }) {
               sx={{
                 background: "transparent",
                 boxShadow: "0 0 8px lightgrey",
-                height: 80,
-                width: 80,
+                height: 70,
+                width: 70,
               }}
               variant="rounded"
             >
