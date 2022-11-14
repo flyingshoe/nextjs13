@@ -1,6 +1,7 @@
 import { Box, Container, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
-import JobCard from "./jobCard";
+import JobCard from "../../components/jobSearch/jobCard";
+
 
 function JobSearch() {
   const [loading, setLoading] = useState(false);

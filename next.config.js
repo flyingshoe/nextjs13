@@ -10,6 +10,16 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'static.mycareersfuture.gov.sg',
+        port: '',
+        pathname: '/images/company/logos/**',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
