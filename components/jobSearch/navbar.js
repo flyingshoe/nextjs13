@@ -41,7 +41,7 @@ export default function Navbar({ window }) {
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* For Mobile */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", sm: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -108,7 +108,7 @@ export default function Navbar({ window }) {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: { xs: "flex", sm: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
@@ -128,7 +128,7 @@ export default function Navbar({ window }) {
             href="/"
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
+              display: { xs: "none", sm: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
@@ -140,7 +140,7 @@ export default function Navbar({ window }) {
           </Typography>
 
           {/* Middle Items */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", sm: "flex" } }}>
             {navItems.map((item) => (
               <Button
                 key={item.title}
