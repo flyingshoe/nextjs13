@@ -1,7 +1,14 @@
 import { RefreshOutlined } from "@mui/icons-material";
-import { Box, Container, LinearProgress } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Container,
+  LinearProgress,
+  Skeleton,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import JobCard from "../../components/jobSearch/jobCard";
+import JobCardSkeleton from "../../components/jobSearch/jobCardSkeleton";
 import MyFab from "../../components/jobSearch/myFab";
 
 function JobSearch() {
@@ -70,10 +77,6 @@ function JobSearch() {
     }
   };
 
-  if (loading) {
-    return <LinearProgress />;
-  }
-
   return (
     <Box sx={{ backgroundColor: "#eee" }}>
       <Container
@@ -85,13 +88,20 @@ function JobSearch() {
           padding: 4,
         }}
       >
-        {data.map((item) => (
-          <JobCard key={item.uuid} cardData={item} />
-        ))}
-        <MyFab color="secondary" onClick={req}>
-          <RefreshOutlined />
-        </MyFab>
+        {loading ? (
+          <>
+            <JobCardSkeleton />
+            <JobCardSkeleton />
+            <JobCardSkeleton />
+          </>
+        ) : (
+          data.map((item) => <JobCard key={item.uuid} cardData={item} />)
+        )}
       </Container>
+
+      <MyFab color="secondary" onClick={req}>
+        <RefreshOutlined />
+      </MyFab>
     </Box>
   );
 }
