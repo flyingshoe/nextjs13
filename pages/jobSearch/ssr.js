@@ -1,5 +1,7 @@
+import { RefreshOutlined } from "@mui/icons-material";
 import { Box, Container } from "@mui/material";
 import JobCard from "../../components/jobSearch/jobCard";
+import MyFab from "../../components/jobSearch/myFab";
 
 function JobSearchSSR({ data }) {
   return (
@@ -17,6 +19,10 @@ function JobSearchSSR({ data }) {
           <JobCard key={item.uuid} cardData={item} />
         ))}
       </Container>
+
+      <MyFab color="secondary" onClick={() => location.reload()}>
+        <RefreshOutlined />
+      </MyFab>
     </Box>
   );
 }
