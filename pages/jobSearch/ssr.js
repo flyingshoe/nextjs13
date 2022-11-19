@@ -73,8 +73,6 @@ export async function getServerSideProps() {
 
     // Sort according to Unix timestamp
     allData.sort((a, b) => b.unix - a.unix);
-
-    setData(allData);
   } catch (err) {
     console.log("ERROR", err);
   }
