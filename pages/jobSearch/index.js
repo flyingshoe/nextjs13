@@ -1,7 +1,8 @@
+import { RefreshOutlined } from "@mui/icons-material";
 import { Box, Container, LinearProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import JobCard from "../../components/jobSearch/jobCard";
-
+import MyFab from "../../components/jobSearch/myFab";
 
 function JobSearch() {
   const [loading, setLoading] = useState(false);
@@ -87,6 +88,9 @@ function JobSearch() {
         {data.map((item) => (
           <JobCard key={item.uuid} cardData={item} />
         ))}
+        <MyFab color="secondary" onClick={req}>
+          <RefreshOutlined />
+        </MyFab>
       </Container>
     </Box>
   );
