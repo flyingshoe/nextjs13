@@ -17,18 +17,21 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
+import { useRouter } from "next/router";
 
 const navItems = [
   { title: "Job Search", path: "/jobSearch" },
-  { title: "Job Search SSR", path: "/jobSearch/ssr" },
   { title: "Job Search SSG", path: "/jobSearch/ssg" },
   { title: "Job Search ISR", path: "/jobSearch/isr" },
+  { title: "Job Search SSR", path: "/jobSearch/ssr" },
 ];
 
 const drawerWidth = 240;
 
 export default function Navbar({ window }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const router = useRouter();
 
   const toggleDrawer = () => {
     setMobileOpen(!mobileOpen);
@@ -38,7 +41,10 @@ export default function Navbar({ window }) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <AppBar position="sticky">
+    <AppBar
+      position="sticky"
+      // style={{ backgroundColor: "rgba(255,255,255,0.8)", backdropFilter: "blur(8px)" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* For Mobile */}
@@ -69,7 +75,10 @@ export default function Navbar({ window }) {
                 },
               }}
             >
-              <Box onClick={toggleDrawer} sx={{ textAlign: "center" }}>
+              <Box
+                onClick={toggleDrawer}
+                sx={{ textAlign: "center" }}
+              >
                 <Typography
                   variant="h6"
                   sx={{
@@ -77,10 +86,11 @@ export default function Navbar({ window }) {
                     alignItems: "center",
                     justifyContent: "center",
                     gap: 1,
-                    my: 2,
+                    py: 2,
                   }}
                   component={Link}
                   href="/"
+                  className={router.pathname === "/" && "m-nav-item-active"}
                 >
                   <HomeIcon />
                 </Typography>
@@ -92,6 +102,11 @@ export default function Navbar({ window }) {
                       component={Link}
                       href={item.path}
                       disablePadding
+                      className={
+                        router.pathname === item.path
+                          ? "m-nav-item-active"
+                          : "m-nav-item"
+                      }
                     >
                       <ListItemButton sx={{ textAlign: "center" }}>
                         <ListItemText primary={item.title} href={item.path} />
@@ -148,6 +163,9 @@ export default function Navbar({ window }) {
                 href={item.path}
                 component={Link}
                 sx={{ my: 2, color: "white", display: "block" }}
+                className={
+                  router.pathname === item.path ? "nav-item-active" : "nav-item"
+                }
               >
                 {item.title}
               </Button>

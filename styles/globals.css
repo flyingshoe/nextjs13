@@ -24,3 +24,22 @@ a {
     background: black;
   }
 }
+
+.nav-item {
+  /* color: red; */
+}
+
+.nav-item:hover {
+  text-shadow: 0 0 30px black;
+}
+
+.nav-item-active {
+  border-bottom: 1px solid #fff;
+  padding-bottom: 0px;
+  border-radius: 0;
+}
+
+.m-nav-item-active {
+  background-color: #1976d2;
+  color: #fff;
+}
