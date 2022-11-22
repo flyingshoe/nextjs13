@@ -34,9 +34,9 @@ a {
 }
 
 .nav-item-active {
-  border-bottom: 1px solid #fff;
-  padding-bottom: 0px;
-  border-radius: 0;
+  border-bottom: 1px solid #fff !important;
+  padding-bottom: 0px !important;
+  border-radius: 0 !important;
 }
 
 .m-nav-item-active {
