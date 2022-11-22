@@ -1,9 +1,11 @@
 import { RefreshOutlined } from "@mui/icons-material";
 import { Box, Container } from "@mui/material";
+import { useRouter } from "next/router";
 import JobCard from "../../components/jobSearch/jobCard";
 import MyFab from "../../components/jobSearch/myFab";
 
 function JobSearchSSR({ data }) {
+  const router = useRouter();
   return (
     <Box sx={{ backgroundColor: "#eee" }}>
       <Container
@@ -20,7 +22,7 @@ function JobSearchSSR({ data }) {
         ))}
       </Container>
 
-      <MyFab color="secondary" onClick={() => location.reload()}>
+      <MyFab color="secondary" onClick={() => router.replace(router.pathname)}>
         <RefreshOutlined />
       </MyFab>
     </Box>
