@@ -21,6 +21,7 @@ import {
 const navItems = [
   { title: "Job Search", path: "/jobSearch" },
   { title: "Job Search SSR", path: "/jobSearch/ssr" },
+  { title: "Job Search SSG", path: "/jobSearch/ssg" },
   ,
 ];
 
