@@ -2,11 +2,11 @@
     "name": "Job Finder",
     "short_name": "Find Job!",
     "theme_color": "#ffffff",
-    "background_color": "#FF5500",
+    "background_color": "#000000",
     "display": "fullscreen",
     "orientation": "portrait",
     "scope": "/",
-    "start_url": "/",
+    "start_url": "/jobSearch",
     "icons": [
       {
         "src": "icons/icon-192x192.png",
