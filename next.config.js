@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const withPWA = require("next-pwa")({
+  dest: "public",
+});
+
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
@@ -13,12 +17,12 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'static.mycareersfuture.gov.sg',
-        pathname: '/images/company/logos/**',
+        protocol: "https",
+        hostname: "static.mycareersfuture.gov.sg",
+        pathname: "/images/company/logos/**",
       },
     ],
   },
 };
 
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
