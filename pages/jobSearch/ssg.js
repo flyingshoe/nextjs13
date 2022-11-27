@@ -1,4 +1,4 @@
-import { RefreshOutlined } from "@mui/icons-material";
+import RefreshIcon from '@mui/icons-material/Refresh';
 import { Box, Container } from "@mui/material";
 import { useRouter } from "next/router";
 import JobCard from "../../components/jobSearch/jobCard";
@@ -23,7 +23,7 @@ function JobSearchSSG({ data }) {
       </Container>
 
       <MyFab color="secondary" onClick={() => router.replace(router.pathname)}>
-        <RefreshOutlined />
+        <RefreshIcon />
       </MyFab>
     </Box>
   );

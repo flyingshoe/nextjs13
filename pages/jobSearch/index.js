@@ -1,4 +1,4 @@
-import { RefreshOutlined } from "@mui/icons-material";
+import RefreshIcon from '@mui/icons-material/Refresh';
 import {
   Avatar,
   Box,
@@ -100,7 +100,7 @@ function JobSearch() {
       </Container>
 
       <MyFab color="secondary" onClick={req}>
-        <RefreshOutlined />
+        <RefreshIcon />
       </MyFab>
     </Box>
   );
