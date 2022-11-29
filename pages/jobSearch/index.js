@@ -1,15 +1,9 @@
-import RefreshIcon from '@mui/icons-material/Refresh';
-import {
-  Avatar,
-  Box,
-  Container,
-  LinearProgress,
-  Skeleton,
-} from "@mui/material";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import { Box, Container } from "@mui/material";
 import { useEffect, useState } from "react";
+import FabWrapper from "../../components/FabWrapper";
 import JobCard from "../../components/jobSearch/jobCard";
 import JobCardSkeleton from "../../components/jobSearch/jobCardSkeleton";
-import MyFab from "../../components/jobSearch/myFab";
 
 function JobSearch() {
   const [loading, setLoading] = useState(false);
@@ -99,9 +93,9 @@ function JobSearch() {
         )}
       </Container>
 
-      <MyFab color="secondary" onClick={req}>
-        <RefreshIcon />
-      </MyFab>
+      <FabWrapper>
+        <RefreshIcon onClick={req} />
+      </FabWrapper>
     </Box>
   );
 }

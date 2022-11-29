@@ -1,8 +1,8 @@
-import RefreshIcon from '@mui/icons-material/Refresh';
+import RefreshIcon from "@mui/icons-material/Refresh";
 import { Box, Container } from "@mui/material";
 import { useRouter } from "next/router";
+import FabWrapper from "../../components/FabWrapper";
 import JobCard from "../../components/jobSearch/jobCard";
-import MyFab from "../../components/jobSearch/myFab";
 
 function JobSearchISR({ data }) {
   const router = useRouter();
@@ -22,9 +22,9 @@ function JobSearchISR({ data }) {
         ))}
       </Container>
 
-      <MyFab color="secondary" onClick={() => router.replace(router.pathname)}>
-        <RefreshIcon />
-      </MyFab>
+      <FabWrapper color="secondary">
+        <RefreshIcon onClick={() => router.replace(router.pathname)} />
+      </FabWrapper>
     </Box>
   );
 }
