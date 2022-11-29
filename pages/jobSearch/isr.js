@@ -22,7 +22,7 @@ function JobSearchISR({ data }) {
         ))}
       </Container>
 
-      <FabWrapper color="secondary">
+      <FabWrapper>
         <RefreshIcon onClick={() => router.replace(router.pathname)} />
       </FabWrapper>
     </Box>
