@@ -88,7 +88,7 @@ export async function getStaticProps() {
   // Pass data to the page via props
   return {
     props: { data: allData },
-    revalidate: 600, // In seconds
+    revalidate: 60, // In seconds
   };
 }
 
