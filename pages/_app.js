@@ -2,8 +2,9 @@ import Head from 'next/head'
 import { LinearProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Navbar from "../components/jobSearch/navbar";
+
 import "../styles/globals.css";
+import Navbar from '../components/navbar';
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
