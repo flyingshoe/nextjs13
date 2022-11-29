@@ -22,7 +22,9 @@ export default function FabWrapper({ children, ...props }) {
   if (!isGrp) {
     return (
       <FabContainer>
-        <Fab color="secondary">{children}</Fab>
+        <Fab color="secondary" onClick={children.props.onClick}>
+          {children}
+        </Fab>
       </FabContainer>
     );
   }
@@ -32,7 +34,7 @@ export default function FabWrapper({ children, ...props }) {
     return (
       <FabContainer>
         {children.map((child, index) => (
-          <Fab key={index} color="primary">
+          <Fab key={index} color="primary" onClick={child.props.onClick}>
             {child}
           </Fab>
         ))}
@@ -53,7 +55,7 @@ export default function FabWrapper({ children, ...props }) {
           }}
         >
           {children.map((child, index) => (
-            <Fab key={index} color="primary">
+            <Fab key={index} color="primary" onClick={child.props.onClick}>
               {child}
             </Fab>
           ))}
