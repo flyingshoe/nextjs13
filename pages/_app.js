@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { LinearProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-
 import "../styles/globals.css";
 import Navbar from '../components/navbar';
 

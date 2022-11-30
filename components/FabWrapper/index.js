@@ -22,7 +22,14 @@ export default function FabWrapper({ children, ...props }) {
   if (!isGrp) {
     return (
       <FabContainer>
-        <Fab color="secondary" onClick={children.props.onClick}>
+        <Fab
+          color="secondary"
+          // We use a combination of onClickCapture and stopPropagation so that children events are not called (prevent duplicates)
+          onClickCapture={(e) => {
+            e.stopPropagation();
+            children.props.onClick();
+          }}
+        >
           {children}
         </Fab>
       </FabContainer>
@@ -34,7 +41,15 @@ export default function FabWrapper({ children, ...props }) {
     return (
       <FabContainer>
         {children.map((child, index) => (
-          <Fab key={index} color="primary" onClick={child.props.onClick}>
+          <Fab
+            key={index}
+            color="primary"
+            // We use a combination of onClickCapture and stopPropagation so that children events are not called (prevent duplicates)
+            onClickCapture={(e) => {
+              e.stopPropagation();
+              child.props.onClick();
+            }}
+          >
             {child}
           </Fab>
         ))}
@@ -55,7 +70,15 @@ export default function FabWrapper({ children, ...props }) {
           }}
         >
           {children.map((child, index) => (
-            <Fab key={index} color="primary" onClick={child.props.onClick}>
+            <Fab
+              key={index}
+              color="primary"
+              // We use a combination of onClickCapture and stopPropagation so that children events are not called (prevent duplicates)
+              onClickCapture={(e) => {
+                e.stopPropagation();
+                child.props.onClick();
+              }}
+            >
               {child}
             </Fab>
           ))}
