@@ -17,7 +17,7 @@ const getCardCSS = (data) => {
   const date = d.getDate().toString();
   const month = (d.getMonth() + 1).toString();
 
-  if (jobDate === date && jobMonth === month) {
+  if (+jobDate === +date && +jobMonth === +month) {
     return {
       boxShadow: "0 0 8px #F50",
     };
