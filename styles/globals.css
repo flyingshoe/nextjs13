@@ -43,27 +43,3 @@ a {
   background-color: #1976d2;
   color: #fff;
 }
-
-/* Rotate Enter */
-.rotate-enter {
-  transform: rotate(0deg);
-}
-.rotate-enter-active,
-.rotate-enter-done {
-  transform: rotate(45deg);
-}
-.rotate-enter-active {
-  transition: all 400ms;
-}
-
-/* Rotate Exit */
-.rotate-exit {
-  transform: rotate(45deg);
-}
-.rotate-exit-active,
-.rotate-exit-done {
-  transform: rotate(0deg);
-}
-.rotate-exit-active {
-  transition: all 400ms;
-}

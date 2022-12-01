@@ -6,8 +6,10 @@ import { CSSTransition } from "react-transition-group";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import FabContainer from "./FabContainer";
+import rotate from "/styles/animation/rotate.module.css";
+import { kebabToCamel, modObjKeys } from "../../utils";
 
-export default function FabWrapper({ children, ...props }) {
+export default function FabWrapper({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const isGrp = Array.isArray(children);
   const nodeRef = useRef(null);
@@ -89,7 +91,7 @@ export default function FabWrapper({ children, ...props }) {
       <CSSTransition
         nodeRef={nodeRef}
         in={isOpen}
-        classNames="rotate"
+        classNames={modObjKeys(rotate, kebabToCamel)}
         timeout={3000}
       >
         <Fab color="secondary" ref={nodeRef} onClick={toggleFab}>
