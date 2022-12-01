@@ -7,7 +7,7 @@
   transform: rotate(45deg);
 }
 .enter-active {
-  transition: all 400ms;
+  transition: all 0.4s !important;
 }
 
 /* Rotate Exit */
@@ -19,5 +19,5 @@
   transform: rotate(0deg);
 }
 .exit-active {
-  transition: all 400ms;
+  transition: all 0.4s !important;
 }
