@@ -1,9 +1,11 @@
-import Head from 'next/head'
+import Head from "next/head";
 import { LinearProgress } from "@mui/material";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import "../styles/globals.css";
-import Navbar from '../components/navbar';
+import Navbar from "../components/navbar";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 
 function MyApp({ Component, pageProps }) {
   const [loading, setLoading] = useState(false);
@@ -22,8 +24,9 @@ function MyApp({ Component, pageProps }) {
       setLoading(false);
     });
   }, []);
+  const queryClient = new QueryClient();
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Head>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
@@ -54,7 +57,7 @@ function MyApp({ Component, pageProps }) {
       <Navbar />
       {loading && <LinearProgress />}
       <Component {...pageProps} />
-    </>
+    </QueryClientProvider>
   );
 }
 

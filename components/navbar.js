@@ -21,6 +21,7 @@ import { useRouter } from "next/router";
 
 const navItems = [
   { title: "Job Search", path: "/jobSearch" },
+  { title: "React Query", path: "/jobSearch/reactQuery" },
   { title: "Job Search SSG", path: "/jobSearch/ssg" },
   { title: "Job Search ISR", path: "/jobSearch/isr" },
   { title: "Job Search SSR", path: "/jobSearch/ssr" },
@@ -75,10 +76,7 @@ export default function Navbar({ window }) {
                 },
               }}
             >
-              <Box
-                onClick={toggleDrawer}
-                sx={{ textAlign: "center" }}
-              >
+              <Box onClick={toggleDrawer} sx={{ textAlign: "center" }}>
                 <Typography
                   variant="h6"
                   sx={{
