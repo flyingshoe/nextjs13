@@ -7,9 +7,10 @@ import {
 } from "@mui/material";
 
 const iconSize = 70;
+const numOfCards = 3;
 
 export default function JobCardSkeleton() {
-  return (
+  return [...Array(numOfCards)].map(() => (
     <Card>
       <CardActionArea>
         <CardHeader
@@ -47,5 +48,5 @@ export default function JobCardSkeleton() {
         </CardContent>
       </CardActionArea>
     </Card>
-  );
+  ));
 }
