@@ -1,6 +1,23 @@
+import axios from "axios";
 import { Field, Form, Formik } from "formik";
+import { useRef } from "react";
+import sha256 from "sha256";
+import MyModal from "../../components/modal";
 
 export default function LoginPage() {
+  const modalRef = useRef(null);
+
+  const submit = async ({ username, password }) => {
+    const res = await axios.post("/api/auth/checkUser", {
+      data: {
+        username,
+        password: sha256(password),
+      },
+    });
+
+    console.log(res.data);
+  };
+
   return (
     <>
       <div className="flex min-h-full items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
@@ -17,7 +34,7 @@ export default function LoginPage() {
           </div>
           <Formik
             initialValues={{ username: "", password: "" }}
-            onSubmit={(val) => console.log(val)}
+            onSubmit={submit}
           >
             {({ isSubmitting }) => (
               <Form className="mt-8 space-y-6">
@@ -30,7 +47,7 @@ export default function LoginPage() {
                       id="username"
                       name="username"
                       autoComplete="username"
-                      required
+                      // required
                       className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none sm:text-sm"
                       placeholder="Username"
                     />
@@ -44,14 +61,14 @@ export default function LoginPage() {
                       name="password"
                       type="password"
                       autoComplete="current-password"
-                      required
+                      // required
                       className="relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none sm:text-sm"
                       placeholder="Password"
                     />
                   </div>
                 </div>
 
-                <div>
+                <div className="flex gap-x-4">
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -59,10 +76,21 @@ export default function LoginPage() {
                   >
                     {isSubmitting ? "Signing In..." : "Sign In"}
                   </button>
+                  <div
+                    onClick={() => {
+                      modalRef.current.openModal();
+                    }}
+                    disabled={isSubmitting}
+                    className="cursor-pointer text-center bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded-md w-full text-sm font-medium disabled:opacity-50"
+                  >
+                    Create Account
+                  </div>
                 </div>
               </Form>
             )}
           </Formik>
+
+          <MyModal ref={modalRef} title="Create New Account" />
         </div>
       </div>
     </>
