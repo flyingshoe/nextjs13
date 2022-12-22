@@ -10,8 +10,8 @@ const iconSize = 70;
 const numOfCards = 3;
 
 export default function JobCardSkeleton() {
-  return [...Array(numOfCards)].map(() => (
-    <Card>
+  return [...Array(numOfCards)].map((_, idx) => (
+    <Card key={idx}>
       <CardActionArea>
         <CardHeader
           avatar={

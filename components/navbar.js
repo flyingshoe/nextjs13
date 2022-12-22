@@ -88,7 +88,7 @@ export default function Navbar({ window }) {
                   }}
                   component={Link}
                   href="/"
-                  className={router.pathname === "/" && "m-nav-item-active"}
+                  className={router.pathname === "/" ? "m-nav-item-active" : ""}
                 >
                   <HomeIcon />
                 </Typography>
