@@ -5,7 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { forwardRef, useImperativeHandle, useState } from "react";
-import { Add, Delete, Save } from "@mui/icons-material";
+import { Add, Close, Delete, Save } from "@mui/icons-material";
 import {
   Checkbox,
   IconButton,
@@ -61,7 +61,19 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
-      <DialogTitle>Edit Search </DialogTitle>
+      <DialogTitle>Edit Search</DialogTitle>
+      <IconButton
+        aria-label="close"
+        onClick={handleClose}
+        sx={{
+          position: "absolute",
+          right: 8,
+          top: 8,
+          color: (theme) => theme.palette.grey[500],
+        }}
+      >
+        <Close />
+      </IconButton>
       <DialogContent>
         <List>
           {job.map(({ id, enabled, search, salary }) => (
@@ -87,6 +99,9 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
                   onChange={(e) => {
                     modifyJob(id, "search", e.target.value);
                   }}
+                  onFocus={(event) => {
+                    event.target.select();
+                  }}
                 />
               </ListItemText>
               <ListItemText style={{ marginLeft: 20 }}>
@@ -99,6 +114,9 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
                   value={salary}
                   onChange={(e) => {
                     modifyJob(id, "salary", +e.target.value);
+                  }}
+                  onFocus={(event) => {
+                    event.target.select();
                   }}
                 />
               </ListItemText>
@@ -118,14 +136,14 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
           startIcon={<Add />}
           color="success"
         >
-          Add New Job
+          Add Job
         </Button>
         <Button variant="contained" startIcon={<Save />} onClick={save}>
           Save
         </Button>
-        <Button variant="outlined" onClick={handleClose}>
+        {/* <Button variant="outlined" onClick={handleClose}>
           Cancel
-        </Button>
+        </Button> */}
       </DialogActions>
     </Dialog>
   );
