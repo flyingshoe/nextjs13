@@ -6,7 +6,7 @@
     "display": "fullscreen",
     "orientation": "portrait",
     "scope": "/",
-    "start_url": "/jobSearch",
+    "start_url": "/jobSearch/reactQuery",
     "icons": [
       {
         "src": "icons/icon-192x192.png",
