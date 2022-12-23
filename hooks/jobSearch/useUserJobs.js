@@ -4,13 +4,15 @@ import jobData from "../../constants/jobData";
 const { param: baseParam, options: baseData, data } = jobData;
 
 const lsKey = "mcfQuery";
-let firstLoad = true;
+
 export default function useUserJobs() {
   const [jobQuery, setJobQuery] = useState(() => {
+    // If existing key exists in local storage, return it
     if (typeof window !== "undefined" && lsKey in localStorage) {
       return JSON.parse(localStorage.getItem(lsKey));
     }
-    return data;
+    // No existing key, return default data instead
+    return jobData;
   });
 
   useEffect(() => {

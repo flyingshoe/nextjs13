@@ -9,6 +9,7 @@ import { Add, Close, Delete, Save } from "@mui/icons-material";
 import {
   Checkbox,
   IconButton,
+  InputAdornment,
   List,
   ListItem,
   ListItemIcon,
@@ -29,28 +30,27 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
     setOpen(false);
   };
 
-  function modifyJob(id, key, val) {
-    const tempQuery = [...job]; // Clone job query
+  function editQuery(id, key, val) {
+    const { data: tempQuery } = { ...job }; // Clone job query
     const idx = tempQuery.findIndex((q) => q.id === id); // find index of corresponding id
     tempQuery[idx][key] = val; // Mutate temp job query
-    setJob(tempQuery); // Update new state
+    setJob({ ...job, data: tempQuery }); // Update new state
   }
 
   const deleteQuery = (id) => {
-    let tempQuery = [...job]; // Clone job query
+    let { data: tempQuery } = { ...job }; // Clone job query
     tempQuery = tempQuery.filter((q) => q.id !== id); // Remove job query
-    setJob(tempQuery); // Update new state
+    setJob({ ...job, data: tempQuery }); // Update new state
   };
 
   const addQuery = () => {
-    let tempQuery = [...job]; // Clone job query
+    let { data: tempQuery } = { ...job }; // Clone job query
     tempQuery.unshift({
       id: Date.now(),
       search: "",
-      salary: tempQuery[0]?.salary || "",
       enabled: true,
     }); // Add Job Query
-    setJob(tempQuery); // Update new state
+    setJob({ ...job, data: tempQuery }); // Update new state
   };
 
   function save() {
@@ -60,7 +60,7 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
   }
 
   return (
-    <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
+    <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
       <DialogTitle>Edit Search</DialogTitle>
       <IconButton
         aria-label="close"
@@ -76,16 +76,38 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
       </IconButton>
       <DialogContent>
         <List>
-          {job.map(({ id, enabled, search, salary }) => (
+          <ListItem>
+            <ListItemText style={{ marginLeft: 40, marginRight: 40 }}>
+              <TextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                type="number"
+                margin="dense"
+                label="Monthly Moolah"
+                fullWidth
+                value={job.salary}
+                onChange={(e) => {
+                  const tempData = { ...job };
+                  tempData.salary = +e.target.value;
+                  setJob(tempData);
+                }}
+                onFocus={(event) => {
+                  event.target.select();
+                }}
+              />
+            </ListItemText>
+          </ListItem>
+          {job.data.map(({ id, enabled, search }) => (
             <ListItem disablePadding key={id}>
               <ListItemIcon>
                 <Checkbox
-                  // edge="start"
                   checked={enabled}
-                  // tabIndex={-1}
                   disableRipple
                   onChange={(_, val) => {
-                    modifyJob(id, "enabled", val);
+                    editQuery(id, "enabled", val);
                   }}
                 />
               </ListItemIcon>
@@ -97,23 +119,7 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
                   disabled={!enabled}
                   value={search}
                   onChange={(e) => {
-                    modifyJob(id, "search", e.target.value);
-                  }}
-                  onFocus={(event) => {
-                    event.target.select();
-                  }}
-                />
-              </ListItemText>
-              <ListItemText style={{ marginLeft: 20 }}>
-                <TextField
-                  type="number"
-                  margin="dense"
-                  label="Salary per month"
-                  fullWidth
-                  disabled={!enabled}
-                  value={salary}
-                  onChange={(e) => {
-                    modifyJob(id, "salary", +e.target.value);
+                    editQuery(id, "search", e.target.value);
                   }}
                   onFocus={(event) => {
                     event.target.select();
@@ -141,9 +147,6 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
         <Button variant="contained" startIcon={<Save />} onClick={save}>
           Save
         </Button>
-        {/* <Button variant="outlined" onClick={handleClose}>
-          Cancel
-        </Button> */}
       </DialogActions>
     </Dialog>
   );

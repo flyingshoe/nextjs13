@@ -15,15 +15,15 @@ export default function ReactQuery() {
 
   const req = async () => {
     const allRes = await Promise.allSettled(
-      jobQuery
+      jobQuery.data
         .filter(({ enabled }) => enabled)
-        .map(({ search, salary }) =>
+        .map(({ search }) =>
           axios.post(
             "/api/findJob/v2/search",
             {
               ...baseData,
               search,
-              salary,
+              salary: jobQuery.salary,
             },
             {
               params: baseParam,

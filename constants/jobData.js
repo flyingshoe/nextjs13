@@ -4,8 +4,9 @@ export default {
     sortBy: ["new_posting_date"],
   },
   data: [
-    { id: 1, search: "frontend", salary: 6500, enabled: true },
-    { id: 2, search: "front end", salary: 6500, enabled: true },
-    { id: 3, search: "react", salary: 6500, enabled: true },
+    { id: 1, search: "frontend", enabled: true },
+    { id: 2, search: "front end", enabled: true },
+    { id: 3, search: "react", enabled: true },
   ],
+  salary: 6500,
 };
