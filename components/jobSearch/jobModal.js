@@ -45,7 +45,7 @@ function JobModal({ jobQuery, setJobQuery }, ref) {
 
   const addQuery = () => {
     let { data: tempQuery } = { ...job }; // Clone job query
-    tempQuery.unshift({
+    tempQuery.push({
       id: Date.now(),
       search: "",
       enabled: true,
