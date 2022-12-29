@@ -1,16 +1,7 @@
-import RefreshIcon from "@mui/icons-material/Refresh";
-import EditIcon from "@mui/icons-material/Edit";
-import FabWrapper from "../components/FabWrapper";
+import ReactQuery from "./jobSearch/reactQuery";
 
 export default function Home() {
   return (
-    <>
-      <h1>Home page!</h1>
-
-      <FabWrapper>
-        <RefreshIcon />
-        <EditIcon />
-      </FabWrapper>
-    </>
+    <ReactQuery/>
   );
 }

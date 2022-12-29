@@ -18,14 +18,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import { useRouter } from "next/router";
-
-const navItems = [
-  { title: "Job Search", path: "/jobSearch" },
-  { title: "React Query", path: "/jobSearch/reactQuery" },
-  { title: "Job Search SSG", path: "/jobSearch/ssg" },
-  { title: "Job Search ISR", path: "/jobSearch/isr" },
-  { title: "Job Search SSR", path: "/jobSearch/ssr" },
-];
+import { navItems } from "../constants/navbar";
 
 const drawerWidth = 240;
 
