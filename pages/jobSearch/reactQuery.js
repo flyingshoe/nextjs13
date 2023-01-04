@@ -11,7 +11,7 @@ import useUserJobs from "../../hooks/jobSearch/useUserJobs";
 export default function ReactQuery() {
   const axios = require("axios");
   const modalRef = useRef(null);
-  const [jobQuery, setJobQuery, baseParam, baseData] = useUserJobs();
+  const {jobQuery, setJobQuery, baseParam, baseData} = useUserJobs();
 
   const req = async () => {
     const allRes = await Promise.allSettled(

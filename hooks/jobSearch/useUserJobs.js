@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import jobData from "../../constants/jobData";
 
-const { param: baseParam, options: baseData, data } = jobData;
+const { param: baseParam, options: baseData } = jobData;
 
 const lsKey = "mcfQuery";
 
@@ -20,5 +20,5 @@ export default function useUserJobs() {
     localStorage.setItem(lsKey, JSON.stringify(jobQuery));
   }, [jobQuery]);
 
-  return [jobQuery, setJobQuery, baseParam, baseData];
+  return { jobQuery, setJobQuery, baseParam, baseData };
 }
